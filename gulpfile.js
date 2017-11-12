@@ -9,6 +9,7 @@ var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
+var imagemin = require('gulp-imagemin');
 
 var TYPESCRIPT_FILES = ['./app/**/*.ts'];
 var SASS_FILES = ['./public/dev/sass/**/*.scss'];
@@ -66,8 +67,8 @@ gulp.task('compress-image', function() {
 
 gulp.task('minify-js', function() {
   return gulp.src([
+        "./node_modules/jquery/dist/jquery.js",
         "./node_modules/bootstrap/dist/js/bootstrap.js",
-        "./node_modules/jquery/jquery.js",
         "./public/dev/js/*.js"
     ])
     .pipe(concat("script.js"))
