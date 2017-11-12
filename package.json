@@ -1,0 +1,39 @@
+{
+  "name": "binar",
+  "version": "1.0.0",
+  "description": "Binarne Liczydło",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Magnum34/binar.git"
+  },
+  "keywords": [],
+  "author": "Magnum34",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Magnum34/binar/issues"
+  },
+  "homepage": "https://github.com/Magnum34/binar#readme",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-typescript": "^3.2.3",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^4.3.11",
+    "typescript": "^2.6.1"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1"
+  }
+}
