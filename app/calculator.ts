@@ -5,7 +5,8 @@ export class Calculator {
 
     constructor(select : HTMLElement){
         select.addEventListener("change",function(){
-            console.log($(this).val);
+            let type = $(this).val();
+
         });
     }
 

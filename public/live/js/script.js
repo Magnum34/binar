@@ -2383,7 +2383,7 @@ var $ = require("jquery");
 var Calculator = /** @class */ (function () {
     function Calculator(select) {
         select.addEventListener("change", function () {
-            console.log($(this).val);
+            var type = $(this).val();
         });
     }
     return Calculator;
