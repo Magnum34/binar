@@ -18,22 +18,31 @@
   },
   "homepage": "https://github.com/Magnum34/binar#readme",
   "devDependencies": {
+    "@types/jquery": "^3.2.16",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-browserify-typescript": "^1.0.1",
     "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^3.4.0",
     "gulp-livereload": "^3.8.1",
+    "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-typescript": "^3.2.3",
     "gulp-uglify": "^3.0.0",
     "gulp-watch": "^4.3.11",
-    "typescript": "^2.6.1"
+    "typescript": "^2.6.1",
+    "webpack": "^3.8.1"
   },
   "dependencies": {
+    "@types/jquery": "^3.2.16",
     "bootstrap": "^3.3.7",
+    "bootstrap-daterangepicker": "^2.1.25",
+    "gulp-dest": "^0.2.3",
     "jquery": "^3.2.1"
   }
 }

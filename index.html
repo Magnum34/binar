@@ -1,17 +1,86 @@
 <!DOCTYPE html>
 <html lang="pl">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Binarne Liczydło, Obliczanie binarne, Kalkulator binarny">
-        <meta name="keywords" content="Hex, dec, oct, bin, binarnie, hexal" />
-        <meta name="author" content="Magnum34">
-	    <title>Binarne Liczydło</title>
 
-        <link href="./public/live/css/style.min.css" rel="stylesheet">
-    </head>
-    <body>
-        <script src="./public/live/js/script.js"></script>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Binarne Liczydło, Obliczanie binarne, Kalkulator binarny">
+    <meta name="keywords" content="Hex, dec, oct, bin, binarnie, hexal" />
+    <meta name="author" content="Magnum34">
+    <title>Binarne Liczydło</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link href="./public/live/css/style.min.css" rel="stylesheet">
+    <link href="./public/dev/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Binarne Liczydło</h1>
+
+        </header>
+        <article class="content">
+            <div class="row">
+                <div class="form-group">
+                    <select class="form-control" name="select"> 
+                        <option value="default" selected>(Wybierz)</option> 
+                        <option value="bin">Dwójkowo</option> 
+                        <option value="dec" >Dziesiętnie</option>
+                        <option value="oct">Ósemkowo</option>
+                        <option value="hex">Szesnatkowo</option>
+                        <option value="quaternary">Czwórkowo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="bin" class="col-md-2 control-label">Dwójkowo</label>
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" id="bin" placeholder="Dwójkowo">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="dec" class="col-md-2 control-label">Dziesiętnie</label>
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" id="dec" placeholder="Dziesiętnie">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="oct" class="col-md-2 control-label">Ósemkowo</label>
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" id="oct" placeholder="Ósemkowo">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="hex" class="col-md-2 control-label">Szesnatkowo</label>
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" id="hex" placeholder="Szesnatkowo">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="quaternary" class="col-md-2 control-label">Czwórkowo</label>
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" id="quaternary" placeholder="Czwórkowo">
+                    </div>
+                </div>
+            </div>
+        </article>
+        <footer>
+            <span>Copyright © 2017 by Magnum34 ver 2.0</span>
+        </footer>
+
+    </div>
+    
+    <script src="./public/dev/js/application.js"></script>
+</body>
+
 </html>

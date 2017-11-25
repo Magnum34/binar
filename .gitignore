@@ -40,3 +40,4 @@ server/typings
 .vscode
 
 public/dev
+app/typings

@@ -9,25 +9,38 @@ var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
+var dest = require('gulp-dest');
 var imagemin = require('gulp-imagemin');
+var browserify = require('browserify');
+var tsify = require('tsify');
+var source = require('vinyl-source-stream');
 
-var TYPESCRIPT_FILES = ['./app/**/*.ts'];
+var TYPESCRIPT_FILES = ['./app/init.ts'];
+var JAVASCRIPT_FILES_LIVE = [ "./node_modules/bootstrap/dist/js/bootstrap.js","./public/dev/js/*.js"]
 var SASS_FILES = ['./public/dev/sass/**/*.scss'];
 
 gulp.task('build:ts', function(){
-    var tsProject = ts.createProject(
-        path.resolve('./tsconfig')
-    );
-    var tsResult = gulp.src(['./app/**/*.ts'])
-    .pipe(sourcemaps.init())
-    .pipe(ts(tsProject));
-    return tsResult.js.pipe(sourcemaps.write())
-    .pipe(gulp.dest(
-        path.resolve('./public/dev/js')
-    ));
+    var bundler = browserify().
+    add('./app/init.ts')
+    .plugin(tsify, { noImplicitAny: true });
+
+    return bundler.bundle()
+		.pipe(source('application.js'))
+		.pipe(gulp.dest('./public/dev/js/'));
+
+    // var tsProject = ts.createProject('tsconfig.json');
+    // var tsResult = gulp.src(['./app/**/*.ts'])
+    // .pipe(sourcemaps.init())
+    // .pipe(tsProject());
+    // return tsResult.js.pipe(sourcemaps.write())
+    // .pipe(gulp.dest(
+    //     path.resolve('./public/dev/js')
+    // ));
 
 });
-
+/*
+* Build css
+*/
 gulp.task('sass', function(){
     return gulp.src(SASS_FILES)
     .pipe(sass().on('error', sass.logError))
@@ -35,7 +48,9 @@ gulp.task('sass', function(){
         path.resolve('./public/dev/css')
     ));
 });
-
+/*
+* minify css
+*/
 gulp.task('minify-css', function() {
   return gulp.src([
         "./node_modules/bootstrap/dist/css/bootstrap.css",
@@ -64,10 +79,11 @@ gulp.task('compress-image', function() {
         path.resolve('./public/live/image/')    
     ));
 });
-
+/*
+* minify-js
+*/
 gulp.task('minify-js', function() {
   return gulp.src([
-        "./node_modules/jquery/dist/jquery.js",
         "./node_modules/bootstrap/dist/js/bootstrap.js",
         "./public/dev/js/*.js"
     ])
@@ -82,17 +98,17 @@ gulp.task('minify-js', function() {
     ));
 });
 
-gulp.task('dev-watch',['build:ts'],function(){
+gulp.task('dev-watch',['build:ts','sass','minify-js'],function(){
     livereload.listen();
     var watcher = gulp.watch(TYPESCRIPT_FILES,['build:ts']);
     watcher.on('change', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
+    gulp.watch(JAVASCRIPT_FILES_LIVE,['minify-js']);
     var watcher = gulp.watch(SASS_FILES,['sass']);
-        watcher.on('change', function(event) {
+    watcher.on('change', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
-    gulp.watch(SASS_FILES,['minify-css']);
 });
 
 gulp.task('dev',['build:ts','sass','minify-css']);

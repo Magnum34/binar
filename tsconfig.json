@@ -1,17 +1,17 @@
 {
     "compilerOptions": {
-        "module": "system",
+        "module": "commonjs",
         "sourceMap": true,
         "noEmitOnError": true,
         "noImplicitAny": true,
-        "experimentalDecorators": true,
-        "outFile": "public/js/main.js"
+        "experimentalDecorators": true
     },
     "include": [
-        "app/*.ts"
+        "app/**/*"
     ],
     "exclude": [
         "node_modules",
-        "build"
+        "**/*.spec.ts"
     ]
+    
 }
