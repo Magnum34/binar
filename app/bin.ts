@@ -4,6 +4,11 @@ import { Calculator } from './calculator';
 
 export class Binary extends Calculator {
 
+    
+    public Calculation(): null {
+        throw new Error("Method not implemented.");
+    }
+
 
     public getDisabled(): null {
         let input = $('input');

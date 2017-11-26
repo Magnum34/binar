@@ -2396,6 +2396,9 @@ var Binary = /** @class */ (function (_super) {
     function Binary() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Binary.prototype.Calculation = function () {
+        throw new Error("Method not implemented.");
+    };
     Binary.prototype.getDisabled = function () {
         var input = $('input');
         input.each(function () {
@@ -2443,6 +2446,23 @@ var Decimal = /** @class */ (function (_super) {
     function Decimal() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Decimal.prototype.Calculation = function () {
+        $("#dec").keyup(function (e) {
+            var value = $(this).val();
+            if (value != '') {
+                var bin = (value >>> 0).toString(2);
+                $("#bin").val(bin);
+                var oct = (value >>> 0).toString(8);
+                $("#oct").val(oct);
+                var hex = (value >>> 0).toString(16).toUpperCase();
+                ;
+                $("#hex").val(hex);
+                var quaternary = (value >>> 0).toString(4);
+                $("#quaternary").val(quaternary);
+            }
+        });
+        return null;
+    };
     Decimal.prototype.getDisabled = function () {
         var input = $('input');
         input.each(function () {
@@ -2497,6 +2517,7 @@ var Factory = /** @class */ (function () {
             }
             if (obj) {
                 obj.getDisabled();
+                obj.Calculation();
             }
         });
     };
@@ -2524,6 +2545,9 @@ var Hexal = /** @class */ (function (_super) {
     function Hexal() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Hexal.prototype.Calculation = function () {
+        throw new Error("Method not implemented.");
+    };
     Hexal.prototype.getDisabled = function () {
         var input = $('input');
         input.each(function () {
@@ -2569,6 +2593,9 @@ var Octal = /** @class */ (function (_super) {
     function Octal() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Octal.prototype.Calculation = function () {
+        throw new Error("Method not implemented.");
+    };
     Octal.prototype.getDisabled = function () {
         var input = $('input');
         input.each(function () {
@@ -2606,6 +2633,9 @@ var Quaternary = /** @class */ (function (_super) {
     function Quaternary() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Quaternary.prototype.Calculation = function () {
+        throw new Error("Method not implemented.");
+    };
     Quaternary.prototype.getDisabled = function () {
         var input = $('input');
         input.each(function () {
