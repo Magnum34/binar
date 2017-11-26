@@ -2378,26 +2378,252 @@ if (typeof jQuery === 'undefined') {
 
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 exports.__esModule = true;
 var $ = require("jquery");
-var Calculator = /** @class */ (function () {
-    function Calculator(select) {
-        select.addEventListener("change", function () {
-            var type = $(this).val();
+var calculator_1 = require("./calculator");
+var Binary = /** @class */ (function (_super) {
+    __extends(Binary, _super);
+    function Binary() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Binary.prototype.getDisabled = function () {
+        var input = $('input');
+        input.each(function () {
+            var name = $(this).attr('id');
+            if (name != 'bin') {
+                $(this).prop('disabled', true);
+            }
+            else {
+                $(this).prop('disabled', false);
+            }
         });
+        return null;
+    };
+    return Binary;
+}(calculator_1.Calculator));
+exports.Binary = Binary;
+
+},{"./calculator":2,"jquery":9}],2:[function(require,module,exports){
+"use strict";
+exports.__esModule = true;
+var Calculator = /** @class */ (function () {
+    function Calculator() {
     }
     return Calculator;
 }());
 exports.Calculator = Calculator;
 
-},{"jquery":3}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+exports.__esModule = true;
+var $ = require("jquery");
+var calculator_1 = require("./calculator");
+var Decimal = /** @class */ (function (_super) {
+    __extends(Decimal, _super);
+    function Decimal() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Decimal.prototype.getDisabled = function () {
+        var input = $('input');
+        input.each(function () {
+            var name = $(this).attr('id');
+            if (name != 'dec') {
+                $(this).prop('disabled', true);
+            }
+            else {
+                $(this).prop('disabled', false);
+            }
+        });
+        return null;
+    };
+    return Decimal;
+}(calculator_1.Calculator));
+exports.Decimal = Decimal;
+
+},{"./calculator":2,"jquery":9}],4:[function(require,module,exports){
 "use strict";
 exports.__esModule = true;
-var calculator_1 = require("./calculator");
-var select = document.getElementsByTagName("select")[0];
-var calculator = new calculator_1.Calculator(select);
+var $ = require("jquery");
+var bin_1 = require("./bin");
+var hex_1 = require("./hex");
+var oct_1 = require("./oct");
+var dec_1 = require("./dec");
+var quaternary_1 = require("./quaternary");
+var Factory = /** @class */ (function () {
+    function Factory() {
+    }
+    Factory.prototype.create = function (select) {
+        var _this = this;
+        select.addEventListener("change", function () {
+            var type = $(this).val();
+            switch (type) {
+                case 'bin':
+                    var obj = new bin_1.Binary();
+                    break;
+                case 'dec':
+                    var obj = new dec_1.Decimal();
+                    break;
+                case 'oct':
+                    var obj = new oct_1.Octal();
+                    break;
+                case 'hex':
+                    var obj = new hex_1.Hexal();
+                    break;
+                case 'quaternary':
+                    var obj = new quaternary_1.Quaternary();
+                    break;
+                default:
+                    break;
+            }
+            if (obj) {
+                obj.getDisabled();
+            }
+        });
+    };
+    return Factory;
+}());
+exports.Factory = Factory;
 
-},{"./calculator":1}],3:[function(require,module,exports){
+},{"./bin":1,"./dec":3,"./hex":5,"./oct":7,"./quaternary":8,"jquery":9}],5:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+exports.__esModule = true;
+var $ = require("jquery");
+var calculator_1 = require("./calculator");
+var Hexal = /** @class */ (function (_super) {
+    __extends(Hexal, _super);
+    function Hexal() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Hexal.prototype.getDisabled = function () {
+        var input = $('input');
+        input.each(function () {
+            var name = $(this).attr('id');
+            if (name != 'hex') {
+                $(this).prop('disabled', true);
+            }
+            else {
+                $(this).prop('disabled', false);
+            }
+        });
+        return null;
+    };
+    return Hexal;
+}(calculator_1.Calculator));
+exports.Hexal = Hexal;
+
+},{"./calculator":2,"jquery":9}],6:[function(require,module,exports){
+"use strict";
+exports.__esModule = true;
+var factory_1 = require("./factory");
+var select = document.getElementsByTagName("select")[0];
+var factory = new factory_1.Factory();
+var obj = factory.create(select);
+
+},{"./factory":4}],7:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+exports.__esModule = true;
+var $ = require("jquery");
+var calculator_1 = require("./calculator");
+var Octal = /** @class */ (function (_super) {
+    __extends(Octal, _super);
+    function Octal() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Octal.prototype.getDisabled = function () {
+        var input = $('input');
+        input.each(function () {
+            var name = $(this).attr('id');
+            if (name != 'oct') {
+                $(this).prop('disabled', true);
+            }
+            else {
+                $(this).prop('disabled', false);
+            }
+        });
+        return null;
+    };
+    return Octal;
+}(calculator_1.Calculator));
+exports.Octal = Octal;
+
+},{"./calculator":2,"jquery":9}],8:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+exports.__esModule = true;
+var $ = require("jquery");
+var calculator_1 = require("./calculator");
+var Quaternary = /** @class */ (function (_super) {
+    __extends(Quaternary, _super);
+    function Quaternary() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Quaternary.prototype.getDisabled = function () {
+        var input = $('input');
+        input.each(function () {
+            var name = $(this).attr('id');
+            if (name != 'quaternary') {
+                $(this).prop('disabled', true);
+            }
+            else {
+                $(this).prop('disabled', false);
+            }
+        });
+        return null;
+    };
+    return Quaternary;
+}(calculator_1.Calculator));
+exports.Quaternary = Quaternary;
+
+},{"./calculator":2,"jquery":9}],9:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
@@ -12652,4 +12878,4 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}]},{},[2]);
+},{}]},{},[6]);

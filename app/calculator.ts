@@ -1,14 +1,6 @@
 
-import $ = require("jquery");
 
-export class Calculator {
+export abstract class Calculator {
 
-    constructor(select : HTMLElement){
-        select.addEventListener("change",function(){
-            let type = $(this).val();
-
-        });
-    }
-
-
+    public abstract getDisabled() :null;
 }

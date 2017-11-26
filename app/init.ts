@@ -1,7 +1,7 @@
 
 
-import { Calculator } from './calculator';
+import { Factory } from './factory';
 
 var select : HTMLElement = <HTMLElement>document.getElementsByTagName("select")[0];
-var calculator = new Calculator(select);
-
+var factory = new Factory();
+var obj  = factory.create(select);
