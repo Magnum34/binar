@@ -2471,6 +2471,13 @@ var Decimal = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Decimal.prototype.LimitMinMax = function () {
+        $("#dec").keydown(function (e) {
+            var number = parseInt(String.fromCharCode(e.keyCode));
+            if ((number > 9 || isNaN(number) || e.keyCode == 44) &&
+                (e.keyCode != 46 && e.keyCode != 8)) {
+                e.preventDefault();
+            }
+        });
         return null;
     };
     Decimal.prototype.Calculation = function () {
@@ -2520,6 +2527,11 @@ var Factory = /** @class */ (function () {
     }
     Factory.prototype.create = function (select) {
         var _this = this;
+        var input = $('input');
+        input.each(function () {
+            var name = $(this).attr('id');
+            $(this).prop('disabled', true);
+        });
         select.addEventListener("change", function () {
             var type = $(this).val();
             switch (type) {
@@ -2573,10 +2585,30 @@ var Hexal = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Hexal.prototype.LimitMinMax = function () {
-        throw new Error("Method not implemented.");
+        $("#hex").keydown(function (e) {
+            var ascii = e.keyCode;
+            if ((((ascii < 48 || 57 < ascii) && (ascii < 65 || 70 < ascii)) || e.keyCode == 44) &&
+                (e.keyCode != 46 && e.keyCode != 8)) {
+                e.preventDefault();
+            }
+        });
+        return null;
     };
     Hexal.prototype.Calculation = function () {
-        throw new Error("Method not implemented.");
+        $("#hex").keyup(function (e) {
+            var value = $(this).val();
+            if (value != '') {
+                var dec = parseInt(value, 16);
+                $("#dec").val(dec);
+                var oct = (dec >>> 0).toString(8);
+                $("#oct").val(oct);
+                var bin = (dec >>> 0).toString(2);
+                $("#bin").val(bin);
+                var quaternary = (dec >>> 0).toString(4);
+                $("#quaternary").val(quaternary);
+            }
+        });
+        return null;
     };
     Hexal.prototype.getDisabled = function () {
         var input = $('input');

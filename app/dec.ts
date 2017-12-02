@@ -5,6 +5,14 @@ import { Calculator } from './calculator';
 export class Decimal extends Calculator {
 
     public LimitMinMax(): null {
+        $("#dec").keydown(function (e) {
+            let number = parseInt(String.fromCharCode(e.keyCode));
+            if ((number > 9 || isNaN(number) || e.keyCode == 44 ) &&
+            ( e.keyCode != 46 && e.keyCode != 8 )
+             ) {
+                e.preventDefault();
+            }
+        });
         return null;
     }
 

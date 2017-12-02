@@ -1,7 +1,7 @@
 
 import $ = require("jquery");
 import { Binary } from './bin';
-import {Calculator} from './calculator';
+import { Calculator } from './calculator';
 import { Hexal } from './hex';
 import { Octal } from './oct';
 import { Decimal } from './dec';
@@ -11,11 +11,18 @@ import { Quaternary } from './quaternary';
 
 export class Factory {
 
-    create(select : HTMLElement){
+    create(select: HTMLElement) {
         let _this = this;
-        select.addEventListener("change",function(){
+        let input = $('input');
+        input.each(function () {
+            let name = $(this).attr('id');
+            $(this).prop('disabled', true);
+
+        });
+
+        select.addEventListener("change", function () {
             let type = $(this).val();
-            switch(type){
+            switch (type) {
                 case 'bin':
                     var obj = new Binary();
                     break;
@@ -29,18 +36,18 @@ export class Factory {
                     var obj = new Hexal();
                     break;
                 case 'quaternary':
-                    var obj = new Quaternary(); 
+                    var obj = new Quaternary();
                     break;
                 default:
                     break;
-                
+
             }
-            if(obj){
+            if (obj) {
                 obj.getDisabled();
                 obj.Calculation();
                 obj.LimitMinMax();
             }
-            
+
         });
     }
 }
