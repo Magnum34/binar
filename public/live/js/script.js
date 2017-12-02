@@ -20,10 +20,10 @@ var Binary = /** @class */ (function (_super) {
     }
     Binary.prototype.LimitMinMax = function () {
         $("#bin").attr("max", "1");
-        $("#bin").keydown(function (e) {
+        $("#bin").on("keydown input", function (e) {
             var number = parseInt(String.fromCharCode(e.keyCode));
             if ((number > 1 || isNaN(number) || e.keyCode == 44) &&
-                (e.keyCode != 46 && e.keyCode != 8)) {
+                (e.keyCode != 46 && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39)) {
                 e.preventDefault();
             }
         });
@@ -93,10 +93,10 @@ var Decimal = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Decimal.prototype.LimitMinMax = function () {
-        $("#dec").keydown(function (e) {
+        $("#dec").on("keydown input", function (e) {
             var number = parseInt(String.fromCharCode(e.keyCode));
             if ((number > 9 || isNaN(number) || e.keyCode == 44) &&
-                (e.keyCode != 46 && e.keyCode != 8)) {
+                (e.keyCode != 46 && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39)) {
                 e.preventDefault();
             }
         });
@@ -207,10 +207,10 @@ var Hexal = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Hexal.prototype.LimitMinMax = function () {
-        $("#hex").keydown(function (e) {
+        $("#hex").on("keydown input", function (e) {
             var ascii = e.keyCode;
             if ((((ascii < 48 || 57 < ascii) && (ascii < 65 || 70 < ascii)) || e.keyCode == 44) &&
-                (e.keyCode != 46 && e.keyCode != 8)) {
+                (e.keyCode != 46 && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39)) {
                 e.preventDefault();
             }
         });
@@ -279,10 +279,10 @@ var Octal = /** @class */ (function (_super) {
     }
     Octal.prototype.LimitMinMax = function () {
         $("#oct").attr("max", "7");
-        $("#oct").keydown(function (e) {
+        $("#oct").on("keydown input", function (e) {
             var number = parseInt(String.fromCharCode(e.keyCode));
             if ((number > 7 || isNaN(number) || e.keyCode == 44) &&
-                (e.keyCode != 46 && e.keyCode != 8)) {
+                (e.keyCode != 46 && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39)) {
                 e.preventDefault();
             }
         });
@@ -343,10 +343,10 @@ var Quaternary = /** @class */ (function (_super) {
     }
     Quaternary.prototype.LimitMinMax = function () {
         $("#quaternary").attr("max", "3");
-        $("#quaternary").keydown(function (e) {
+        $("#quaternary").on("keydown input", function (e) {
             var number = parseInt(String.fromCharCode(e.keyCode));
             if ((number > 3 || isNaN(number) || e.keyCode == 44) &&
-                (e.keyCode != 46 && e.keyCode != 8)) {
+                (e.keyCode != 46 && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39)) {
                 e.preventDefault();
             }
         });

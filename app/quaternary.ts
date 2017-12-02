@@ -6,10 +6,10 @@ export class Quaternary extends Calculator {
 
     public LimitMinMax(): null {
         $("#quaternary").attr("max", "3");
-        $("#quaternary").keydown(function (e) {
+        $("#quaternary").on("keydown input", function (e) {
             let number = parseInt(String.fromCharCode(e.keyCode));
             if ((number > 3 || isNaN(number) || e.keyCode == 44 ) &&
-            ( e.keyCode != 46 && e.keyCode != 8 )
+            ( e.keyCode != 46 && e.keyCode != 8  && e.keyCode != 37 && e.keyCode != 39  )
              ) {
                 e.preventDefault();
             }

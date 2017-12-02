@@ -6,10 +6,10 @@ export class Hexal extends Calculator {
 
 
     public LimitMinMax(): null {
-        $("#hex").keydown(function (e) {
+        $("#hex").on("keydown input", function (e) {
             let ascii =e.keyCode;
             if (( (( ascii < 48 || 57 < ascii ) && ( ascii < 65 || 70 < ascii ) )|| e.keyCode == 44 ) &&
-            ( e.keyCode != 46 && e.keyCode != 8 )
+            ( e.keyCode != 46 && e.keyCode != 8   && e.keyCode != 37 && e.keyCode != 39 )
              ) {
                 e.preventDefault();
             }
