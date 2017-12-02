@@ -4,6 +4,10 @@ import { Calculator } from './calculator';
 
 export class Decimal extends Calculator {
 
+    public LimitMinMax(): null {
+        return null;
+    }
+
 
     public Calculation(): null {
         $("#dec").keyup(function(e){
@@ -13,7 +17,7 @@ export class Decimal extends Calculator {
                 $("#bin").val(bin);
                 let oct = (value >>> 0 ).toString(8);
                 $("#oct").val(oct);
-                let hex = (value >>> 0 ).toString(16).toUpperCase();;
+                let hex = (value >>> 0 ).toString(16).toUpperCase();
                 $("#hex").val(hex);
                 let quaternary = (value >>> 0 ).toString(4);
                 $("#quaternary").val(quaternary);

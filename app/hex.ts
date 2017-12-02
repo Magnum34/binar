@@ -4,6 +4,11 @@ import { Calculator } from './calculator';
 
 export class Hexal extends Calculator {
 
+    
+    public LimitMinMax(): null {
+        throw new Error("Method not implemented.");
+    }
+
 
     public Calculation(): null {
         throw new Error("Method not implemented.");

@@ -38,6 +38,7 @@ export class Factory {
             if(obj){
                 obj.getDisabled();
                 obj.Calculation();
+                obj.LimitMinMax();
             }
             
         });

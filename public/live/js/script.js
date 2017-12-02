@@ -2396,8 +2396,32 @@ var Binary = /** @class */ (function (_super) {
     function Binary() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Binary.prototype.LimitMinMax = function () {
+        $("#bin").attr("max", "1");
+        $("#bin").keydown(function (e) {
+            var number = parseInt(String.fromCharCode(e.keyCode));
+            if ((number > 1 || isNaN(number) || e.keyCode == 44) &&
+                (e.keyCode != 46 && e.keyCode != 8)) {
+                e.preventDefault();
+            }
+        });
+        return null;
+    };
     Binary.prototype.Calculation = function () {
-        throw new Error("Method not implemented.");
+        $("#bin").keyup(function (e) {
+            var value = $(this).val();
+            if (value != '') {
+                var dec = parseInt(value, 2);
+                $("#dec").val(dec);
+                var oct = (dec >>> 0).toString(8);
+                $("#oct").val(oct);
+                var hex = (dec >>> 0).toString(16);
+                $("#hex").val(hex);
+                var quaternary = (dec >>> 0).toString(4);
+                $("#quaternary").val(quaternary);
+            }
+        });
+        return null;
     };
     Binary.prototype.getDisabled = function () {
         var input = $('input');
@@ -2446,6 +2470,9 @@ var Decimal = /** @class */ (function (_super) {
     function Decimal() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Decimal.prototype.LimitMinMax = function () {
+        return null;
+    };
     Decimal.prototype.Calculation = function () {
         $("#dec").keyup(function (e) {
             var value = $(this).val();
@@ -2455,7 +2482,6 @@ var Decimal = /** @class */ (function (_super) {
                 var oct = (value >>> 0).toString(8);
                 $("#oct").val(oct);
                 var hex = (value >>> 0).toString(16).toUpperCase();
-                ;
                 $("#hex").val(hex);
                 var quaternary = (value >>> 0).toString(4);
                 $("#quaternary").val(quaternary);
@@ -2518,6 +2544,7 @@ var Factory = /** @class */ (function () {
             if (obj) {
                 obj.getDisabled();
                 obj.Calculation();
+                obj.LimitMinMax();
             }
         });
     };
@@ -2545,6 +2572,9 @@ var Hexal = /** @class */ (function (_super) {
     function Hexal() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Hexal.prototype.LimitMinMax = function () {
+        throw new Error("Method not implemented.");
+    };
     Hexal.prototype.Calculation = function () {
         throw new Error("Method not implemented.");
     };
@@ -2593,8 +2623,32 @@ var Octal = /** @class */ (function (_super) {
     function Octal() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Octal.prototype.LimitMinMax = function () {
+        $("#oct").attr("max", "7");
+        $("#oct").keydown(function (e) {
+            var number = parseInt(String.fromCharCode(e.keyCode));
+            if ((number > 7 || isNaN(number) || e.keyCode == 44) &&
+                (e.keyCode != 46 && e.keyCode != 8)) {
+                e.preventDefault();
+            }
+        });
+        return null;
+    };
     Octal.prototype.Calculation = function () {
-        throw new Error("Method not implemented.");
+        $("#oct").keyup(function (e) {
+            var value = $(this).val();
+            if (value != '') {
+                var dec = parseInt(value, 8);
+                $("#dec").val(dec);
+                var bin = (dec >>> 0).toString(2);
+                $("#bin").val(bin);
+                var hex = (dec >>> 0).toString(16);
+                $("#hex").val(hex);
+                var quaternary = (dec >>> 0).toString(4);
+                $("#quaternary").val(quaternary);
+            }
+        });
+        return null;
     };
     Octal.prototype.getDisabled = function () {
         var input = $('input');
@@ -2633,8 +2687,32 @@ var Quaternary = /** @class */ (function (_super) {
     function Quaternary() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Quaternary.prototype.LimitMinMax = function () {
+        $("#quaternary").attr("max", "3");
+        $("#quaternary").keydown(function (e) {
+            var number = parseInt(String.fromCharCode(e.keyCode));
+            if ((number > 3 || isNaN(number) || e.keyCode == 44) &&
+                (e.keyCode != 46 && e.keyCode != 8)) {
+                e.preventDefault();
+            }
+        });
+        return null;
+    };
     Quaternary.prototype.Calculation = function () {
-        throw new Error("Method not implemented.");
+        $("#quaternary").keyup(function (e) {
+            var value = $(this).val();
+            if (value != '') {
+                var dec = parseInt(value, 4);
+                $("#dec").val(dec);
+                var bin = (dec >>> 0).toString(2);
+                $("#bin").val(bin);
+                var hex = (dec >>> 0).toString(16);
+                $("#hex").val(hex);
+                var oct = (dec >>> 0).toString(8);
+                $("#oct").val(oct);
+            }
+        });
+        return null;
     };
     Quaternary.prototype.getDisabled = function () {
         var input = $('input');
