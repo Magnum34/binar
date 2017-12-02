@@ -6,7 +6,7 @@ export class Binary extends Calculator {
 
     public LimitMinMax(): null {
         $("#bin").attr("max", "1");
-        $("#bin").on("keydown input", function (e) {
+        $("#bin").on("keydown", function (e) {
             let number = parseInt(String.fromCharCode(e.keyCode));
             if ((number > 1 || isNaN(number) || e.keyCode == 44 ) &&
             ( e.keyCode != 46 && e.keyCode != 8  && e.keyCode != 37 && e.keyCode != 39  )
