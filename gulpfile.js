@@ -84,8 +84,9 @@ gulp.task('compress-image', function() {
 */
 gulp.task('minify-js', function() {
   return gulp.src([
-        "./node_modules/bootstrap/dist/js/bootstrap.js",
-        "./public/dev/js/*.js"
+        "./public/dev/js/*.js",
+        "./node_modules/jquery/dist/jquery.slim.js",
+        "./node_modules/bootstrap/dist/js/bootstrap.bundle.js",
     ])
     .pipe(concat("script.js"))
     .pipe(gulp.dest(
@@ -98,7 +99,7 @@ gulp.task('minify-js', function() {
     ));
 });
 
-gulp.task('dev-watch',['build:ts','sass','minify-js'],function(){
+gulp.task('dev-watch',['build:ts','sass','minify-js','minify-css'],function(){
     livereload.listen();
     var watcher = gulp.watch(TYPESCRIPT_FILES,['build:ts']);
     watcher.on('change', function(event) {
@@ -106,6 +107,13 @@ gulp.task('dev-watch',['build:ts','sass','minify-js'],function(){
     });
     gulp.watch(JAVASCRIPT_FILES_LIVE,['minify-js']);
     var watcher = gulp.watch(SASS_FILES,['sass']);
+    watcher.on('change', function(event) {
+        console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+    });
+    var watcher = gulp.watch([
+        "./node_modules/bootstrap/dist/css/bootstrap.css",
+        "./public/dev/css/*.css"
+    ],['minify-css']);
     watcher.on('change', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
@@ -117,4 +125,4 @@ gulp.task('watch',['dev-watch']);
 
 gulp.task('default',['watch']);
 
-gulp.task('live',['build:ts','minify-css','minify-js','bootstrap-font','compress-image']);
+gulp.task('live',['build:ts','sass','minify-css','minify-js','bootstrap-font','compress-image']);

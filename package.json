@@ -40,9 +40,10 @@
   },
   "dependencies": {
     "@types/jquery": "^3.2.16",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.0.0-beta.2",
     "bootstrap-daterangepicker": "^2.1.25",
     "gulp-dest": "^0.2.3",
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.9"
   }
 }
