@@ -1,2 +1,2 @@
 # Binarne Liczydło
-http://www.binar.magnum34.pl/
+http://www.binar.magnum34.com/
